@@ -1,0 +1,48 @@
+Apache Kafka is a distributed event streaming platform designed to handle high volumes of data in real-time. Think of it as a super-powered message queue system that can reliably move data between different parts of your system.
+Here are the core concepts of Kafka:
+
+Event Streaming Architecture:
+
+
+Producers publish messages/events to topics
+Topics store streams of events in a fault-tolerant, durable way
+Consumers subscribe to topics and process the events
+
+
+Main Use Cases:
+
+
+Real-time data pipelines
+Microservices communication
+Activity tracking/monitoring
+Log aggregation
+Stream processing
+Event-driven architectures
+
+
+
+==========
+
+
+The Kafka producer configuration:
+yamlCopy  kafka:
+    producer:
+      bootstrap-servers: localhost:9092  # Kafka broker address
+This specifies the Kafka broker location where your service will connect.
+The serialization settings:
+yamlCopy      key-serializer: org.apache.kafka.common.serialization.StringSerializer
+      value-serializer: org.springframework.kafka.support.serializer.JsonSerializer
+
+key-serializer: Uses String serialization for message keys
+value-serializer: Uses JSON serialization for message values, allowing you to send Java objects as messages
+
+The type mapping:
+yamlCopy      properties:
+        spring.json.type.mapping: orderConfirmation:com.gusain.ecommerce.kafka.OrderConfirmation
+This creates an alias mapping where:
+
+orderConfirmation is the alias/type identifier
+com.gusain.ecommerce.kafka.OrderConfirmation is the actual Java class
+
+This mapping is crucial for deserialization on the consumer side, helping Kafka know how to convert JSON messages back into Java objects. When sending messages, your OrderConfirmation class objects will be automatically serialized to JSON and can be properly deserialized by consumers that know about this type mapping.
+Would you like to see an example of how to use this configuration with actual code?

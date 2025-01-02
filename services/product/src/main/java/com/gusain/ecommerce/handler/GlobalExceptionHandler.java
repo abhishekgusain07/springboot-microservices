@@ -1,6 +1,6 @@
 package com.gusain.ecommerce.handler;
-
-import com.gusain.ecommerce.exception.CustomerNotFoundException;
+import com.gusain.ecommerce.exception.ProductPurchaseException;
+import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.FieldError;
@@ -13,10 +13,17 @@ import java.util.HashMap;
 @RestControllerAdvice
 public class GlobalExceptionHandler{
 
-    @ExceptionHandler(CustomerNotFoundException.class)
-    public ResponseEntity<String> handle(CustomerNotFoundException e){
+    @ExceptionHandler(ProductPurchaseException.class)
+    public ResponseEntity<String> handle(ProductPurchaseException e){
         return  ResponseEntity
-                .status(HttpStatus.NOT_FOUND)
+                .status(HttpStatus.BAD_REQUEST)
+                .body(e.getMessage());
+    }
+
+    @ExceptionHandler(EntityNotFoundException.class)
+    public ResponseEntity<String> handle(EntityNotFoundException e){
+        return ResponseEntity
+                .status(HttpStatus.BAD_REQUEST)
                 .body(e.getMessage());
     }
 

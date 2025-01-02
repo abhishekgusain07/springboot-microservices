@@ -16,7 +16,7 @@ public class CustomerService {
     private final CustomerRepository repository;
     private final CustomerMapper mapper;
     public String createCustomer(@Valid CustomerRequest request) {
-        var customer = repository.save(mapper.toCustomer(request));
+        Customer customer = repository.save(mapper.toCustomer(request));
         return customer.getId();
     }
 
@@ -30,10 +30,10 @@ public class CustomerService {
 
     private void mergeCustomer(Customer customer, @Valid CustomerRequest request) {
         if(StringUtils.isNotBlank(request.firstName())) {
-            customer.setFirstName(request.firstName());
+            customer.setFirstname(request.firstName());
         }
         if(StringUtils.isNotBlank(request.lastName())) {
-            customer.setLastName(request.lastName());
+            customer.setLastname(request.lastName());
         }
         if(StringUtils.isNotBlank(request.email())) {
             customer.setEmail(request.email());

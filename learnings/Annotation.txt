@@ -1,0 +1,24 @@
+1. @Slf4j is a Lombok annotation used in Java that automatically generates a logging instance in your class.
+    @Slf4j
+    public class MyClass {
+        // your code here
+    }
+
+    // It automatically generates this:
+    public class MyClass {
+        private static final Logger log = LoggerFactory.getLogger(MyClass.class);
+        // your code here
+    }
+
+    USE CASE
+    @Slf4j
+    public class UserService {
+        public void processUser(User user) {
+            log.info("Processing user: {}", user.getName());
+            try {
+                // do something
+            } catch (Exception e) {
+                log.error("Error processing user", e);
+            }
+        }
+    }

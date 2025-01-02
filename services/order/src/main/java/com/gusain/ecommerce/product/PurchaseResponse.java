@@ -1,4 +1,12 @@
 package com.gusain.ecommerce.product;
 
-public record PurchaseResponse() {
+import java.math.BigDecimal;
+
+public record PurchaseResponse(
+    Integer productId,
+    String name,
+    String description,
+    Double quantity,
+    BigDecimal price
+) {
 }

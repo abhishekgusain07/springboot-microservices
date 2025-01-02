@@ -1,4 +1,12 @@
 package com.gusain.ecommerce.orderline;
 
-public class OrderLineRequest {
-}
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Positive;
+
+
+public record OrderLineRequest(
+        Integer id,
+        Integer orderId,
+        Integer productId,
+        Double quantity
+) {}

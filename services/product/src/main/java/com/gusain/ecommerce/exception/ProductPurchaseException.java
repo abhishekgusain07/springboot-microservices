@@ -1,4 +1,7 @@
 package com.gusain.ecommerce.exception;
 
-public class ProductPurchaseException {
+public class ProductPurchaseException extends  RuntimeException {
+    public ProductPurchaseException(String message) {
+        super(message);
+    }
 }

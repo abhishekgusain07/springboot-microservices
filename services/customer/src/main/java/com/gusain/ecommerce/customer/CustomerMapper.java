@@ -9,8 +9,8 @@ public class CustomerMapper {
         if(request == null) return null;
         return Customer.builder()
                 .id(request.id())
-                .firstName(request.firstName())
-                .lastName(request.lastName())
+                .firstname(request.firstName())
+                .lastname(request.lastName())
                 .email(request.email())
                 .address(request.address())
                 .build();
@@ -20,8 +20,8 @@ public class CustomerMapper {
         if(customer == null) return null;
         return new CustomerResponse(
                 customer.getId(),
-                customer.getFirstName(),
-                customer.getLastName(),
+                customer.getFirstname(),
+                customer.getLastname(),
                 customer.getEmail(),
                 customer.getAddress()
         );

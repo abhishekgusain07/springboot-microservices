@@ -1,4 +1,6 @@
 package com.gusain.ecommerce.order;
 
-public interface OrderRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface OrderRepository extends JpaRepository<Order, Integer> {
 }

@@ -1,4 +1,15 @@
 package com.gusain.payment.notification;
 
-public record PaymentNotificationRequest() {
+import com.gusain.payment.payment.PaymentMethod;
+
+import java.math.BigDecimal;
+
+public record PaymentNotificationRequest(
+        String orderReference,
+        BigDecimal amount,
+        PaymentMethod paymentMethod,
+        String customerFirstName,
+        String customerLastName,
+        String customerEmail
+) {
 }

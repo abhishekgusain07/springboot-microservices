@@ -1,4 +1,9 @@
 package com.gusain.ecommerce.customer;
 
-public record CustomerResponse() {
+public record CustomerResponse(
+        String id,
+        String firstName,
+        String lastName,
+        String email
+) {
 }
